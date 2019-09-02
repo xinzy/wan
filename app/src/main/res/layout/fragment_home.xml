@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.xinzy.mvvm.lib.view.binding.adapter.RecyclerViewBindingAdapter.LayoutManagers" />
+        <import type="com.xinzy.mvvm.lib.view.binding.adapter.RecyclerViewBindingAdapter" />
+        <import type="com.xinzy.java.wan.biz.main.viewmodel.HomeViewModel" />
+
+        <variable
+            name="viewModel"
+            type="HomeViewModel" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:isRefreshing="@{viewModel.isShowRefreshing}"
+        app:onRefreshAction="@{viewModel::start}">
+
+        <com.xinzy.java.wan.widget.StatusView
+            android:id="@+id/statusView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:status="@{viewModel.displayStatus}"
+            app:onRetry="@{viewModel::start}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="@{LayoutManagers.linear()}"
+                app:adapter="@{viewModel.topicAdapter}"
+                app:onItemClick="@{viewModel::onItemTopicClick}"
+                app:onScrollToEnd="@{viewModel::onNextPage}"/>
+        </com.xinzy.java.wan.widget.StatusView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

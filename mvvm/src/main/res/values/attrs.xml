@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TagView">
+        <attr name="verticalSpace" format="dimension" />
+        <attr name="horizontalSpace" format="dimension" />
+
+        <attr name="borderWidth" format="dimension" />
+        <attr name="borderRadius" format="dimension" />
+        <attr name="borderColor" format="color" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="dragEnable" format="boolean" />
+        <attr name="dragSensitivity" format="float" />
+        <attr name="maxLines" format="integer" />
+        <attr name="gravity" format="enum">
+            <enum name="left" value="3" />
+            <enum name="center" value="17" />
+            <enum name="right" value="5" />
+        </attr>
+
+        <attr name="itemBorderWidth" format="dimension" />
+        <attr name="itemRadius" format="dimension" />
+        <attr name="itemHorizontalPadding" format="dimension" />
+        <attr name="itemVerticalPadding" format="dimension" />
+        <attr name="itemTextSize" format="dimension" />
+        <attr name="itemDistance" format="dimension" />
+        <attr name="itemTextColor" format="color" />
+        <attr name="itemBorderColor" format="color" />
+        <attr name="itemBackgroundColor" format="color" />
+        <attr name="itemMaxLength" format="integer" />
+        <attr name="itemClickable" format="boolean" />
+        <attr name="itemSelectable" format="boolean" />
+        <attr name="itemTheme" format="enum">
+            <enum name="none" value="-1" />
+            <enum name="random" value="0" />
+            <enum name="pure_cyan" value="1" />
+            <enum name="pure_teal" value="2" />
+        </attr>
+        <attr name="itemTextDirection" format="enum" >
+            <enum name="ltr" value="3" />
+            <enum name="rtl" value="4" />
+        </attr>
+
+        <attr name="itemRippleColor" format="color" />
+        <attr name="itemRippleAlpha" format="integer" />
+        <attr name="itemRippleDuration" format="integer" />
+
+        <attr name="itemEnableCross" format="boolean" />
+        <attr name="itemCrossWidth" format="dimension" />
+        <attr name="itemCrossColor" format="color" />
+        <attr name="itemCrossLineWidth" format="dimension" />
+        <attr name="itemCrossAreaPadding" format="dimension" />
+        <attr name="itemSupportLettersRlt" format="boolean" />
+        <attr name="itemBackground" format="reference" />
+    </declare-styleable>
+
+</resources>
