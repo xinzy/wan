@@ -14,12 +14,12 @@ public class BannerViewBindingAdapter {
         view.setAutoStart(auto);
     }
 
-    @BindingAdapter("onItemClick")
+    @BindingAdapter("onItemClickListener")
     public static void setOnItemClickListener(BannerView banner, BannerView.OnItemClickListener listener) {
         banner.setOnItemClickListener(listener);
     }
 
-    @BindingAdapter("onItemSelected")
+    @BindingAdapter("onItemSelectedListener")
     public static void setOnItemSelectedListener(BannerView banner, BannerView.OnItemSelectedListener l) {
         banner.setOnItemSelectedListener(l);
     }

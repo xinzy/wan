@@ -4,8 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.xinzy.mvvm.lib.view.widget.MultiAdapter" />
-        <import type="com.xinzy.mvvm.lib.view.binding.adapter.RecyclerViewBindingAdapter.LayoutManagers" />
         <import type="com.xinzy.java.wan.entity.Chapter" />
         <import type="com.xinzy.java.wan.biz.main.viewmodel.KnowledgeViewModel" />
         <variable
@@ -61,13 +59,17 @@
                     android:text="@{item.name}"
                     tools:text="标题" />
 
-                <androidx.recyclerview.widget.RecyclerView
+                <com.xinzy.mvvm.lib.view.widget.TagGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"
-                    app:layoutManager="@{LayoutManagers.flexbox()}"
-                    app:adapter="@{MultiAdapter.createAdapter(viewModel, @layout/item_chapter_tag)}"
-                    app:data="@{item.children}"/>
+                    android:enabled="false"
+                    app:borderStrokeWidth="0dp"
+                    app:borderColor="#0000"
+                    app:pressedBackgroundColor="#0000"
+                    app:textColor="#2C4F6C"
+                    app:textSize="12sp"
+                    app:tags="@{item.childrenNames}"
+                    app:onItemTagClickConsumer="@{viewModel::onItemTagClick}"/>
             </LinearLayout>
         </RelativeLayout>
     </FrameLayout>

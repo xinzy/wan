@@ -2,6 +2,7 @@ package com.xinzy.java.wan.entity;
 
 import androidx.annotation.Keep;
 
+import com.google.gson.annotations.SerializedName;
 import com.xinzy.mvvm.lib.util.Collections;
 
 import java.util.ArrayList;
@@ -22,9 +23,12 @@ public class Topic {
     private String niceDate;
 
     private String title;
+    private String projectLink;
 
     private int superChapterId;
     private String superChapterName;
+    @SerializedName("envelopePic")
+    private String cover;
 
     private int courseId;
     private boolean collect;
@@ -67,6 +71,14 @@ public class Topic {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public String getProjectLink() {
+        return projectLink;
     }
 
     public int getSuperChapterId() {

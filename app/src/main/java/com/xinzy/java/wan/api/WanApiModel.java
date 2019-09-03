@@ -63,7 +63,24 @@ public class WanApiModel extends BaseModel {
         return mApi.weixin().compose(RxUtil.applyUi());
     }
 
+    /**
+     * 微信公众号下的文章列表
+     */
     public Observable<ApiResult<WanList<Topic>>> topicByWeixin(int page, int cid, String keyword) {
         return mApi.topicByWeixin(page, cid, keyword).compose(RxUtil.applyUi());
+    }
+
+    /**
+     * 项目分类列表
+     */
+    public Observable<List<Chapter>> projectChapters() {
+        return mApi.projectChapters().compose(RxUtil.applyUi()).map(ApiResult::getData);
+    }
+
+    /**
+     * 项目分类下的文章列表
+     */
+    public Observable<ApiResult<WanList<Topic>>> topicByProject(int page, int cid) {
+        return mApi.topicByProject(page, cid).compose(RxUtil.applyUi());
     }
 }

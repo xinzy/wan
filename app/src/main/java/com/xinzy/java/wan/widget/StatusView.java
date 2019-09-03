@@ -69,7 +69,7 @@ public class StatusView extends ViewFlipper implements View.OnClickListener {
         setDisplayedChild(2);
     }
 
-    @BindingAdapter("onRetry")
+    @BindingAdapter("onRetryAction")
     public static void setRetryListener(@NonNull StatusView view, @NonNull BindingAction action) {
         view.setOnRetryListener(v -> action.call());
     }

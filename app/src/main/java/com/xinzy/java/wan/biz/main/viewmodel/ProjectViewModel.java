@@ -7,17 +7,16 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.xinzy.java.wan.api.WanApiModel;
-import com.xinzy.java.wan.entity.ApiResult;
 import com.xinzy.java.wan.entity.Chapter;
 import com.xinzy.mvvm.lib.base.BaseViewModel;
 
 import java.util.List;
 
-public class WeixinViewModel extends BaseViewModel<WanApiModel> {
+public class ProjectViewModel extends BaseViewModel<WanApiModel> {
 
-    public MutableLiveData<List<Chapter>> weixinListEvent = new MutableLiveData<>();
+    public MutableLiveData<List<Chapter>> projectChapters = new MutableLiveData<>();
 
-    public WeixinViewModel(@NonNull Application application) {
+    public ProjectViewModel(@NonNull Application application) {
         super(application);
     }
 
@@ -28,6 +27,6 @@ public class WeixinViewModel extends BaseViewModel<WanApiModel> {
 
     @SuppressLint("CheckResult")
     private void start() {
-        mModel.weixin().map(ApiResult::getData).subscribe(weixinListEvent::postValue);
+        mModel.projectChapters().subscribe(projectChapters::postValue);
     }
 }

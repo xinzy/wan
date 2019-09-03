@@ -1,11 +1,9 @@
 package com.xinzy.mvvm.lib.base;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
@@ -24,14 +22,11 @@ public abstract class BaseActivity<VDB extends ViewDataBinding, VM extends BaseV
     protected VDB mDataBinding;
     protected VM mViewModel;
 
-    protected ActionBar mActionBar;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mDataBinding = DataBindingUtil.setContentView(this, getLayout());
-        mActionBar = getSupportActionBar();
 
         mViewModel = createViewModel();
         if (mViewModel != null) {
@@ -53,37 +48,6 @@ public abstract class BaseActivity<VDB extends ViewDataBinding, VM extends BaseV
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-    }
-
-    @Override
-    public void setTitle(CharSequence title) {
-        if (mActionBar != null) {
-            mActionBar.setTitle(title);
-        }
-    }
-
-    @Override
-    public void setTitle(int titleId) {
-        setTitle(getText(titleId));
-    }
-
-    public void setDisplayHomeAsUpEnabled(boolean b) {
-        if (mActionBar != null) {
-            mActionBar.setDisplayHomeAsUpEnabled(b);
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onHomeAsUpPressed();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    protected void onHomeAsUpPressed() {
-        finish();
     }
 
     /**

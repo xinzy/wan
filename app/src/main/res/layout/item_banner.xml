@@ -25,6 +25,6 @@
             android:layout_height="match_parent"
             app:data="@{item}"
             app:layoutId="@{@layout/item_banner_item}"
-            app:onItemClick="@{viewModel::onBannerItemClick}"/>
+            app:onItemClickListener="@{viewModel::onBannerItemClick}"/>
     </LinearLayout>
 </layout>

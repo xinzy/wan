@@ -12,28 +12,47 @@
             type="HomeViewModel" />
     </data>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refreshLayout"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:isRefreshing="@{viewModel.isShowRefreshing}"
-        app:onRefreshAction="@{viewModel::start}">
+        android:orientation="vertical">
 
-        <com.xinzy.java.wan.widget.StatusView
-            android:id="@+id/statusView"
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                app:title="@string/title_home"/>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:status="@{viewModel.displayStatus}"
-            app:onRetry="@{viewModel::start}">
+            app:isRefreshing="@{viewModel.isShowRefreshing}"
+            app:onRefreshAction="@{viewModel::start}">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <com.xinzy.java.wan.widget.StatusView
+                android:id="@+id/statusView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layoutManager="@{LayoutManagers.linear()}"
-                app:adapter="@{viewModel.topicAdapter}"
-                app:onItemClick="@{viewModel::onItemTopicClick}"
-                app:onScrollToEnd="@{viewModel::onNextPage}"/>
-        </com.xinzy.java.wan.widget.StatusView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                app:status="@{viewModel.displayStatus}"
+                app:onRetryAction="@{viewModel::start}">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="@{LayoutManagers.linear()}"
+                    app:adapter="@{viewModel.topicAdapter}"
+                    app:onItemClickListener="@{viewModel::onItemTopicClick}"
+                    app:onScrollToEndAction="@{viewModel::onNextPage}"/>
+            </com.xinzy.java.wan.widget.StatusView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </LinearLayout>
 </layout>

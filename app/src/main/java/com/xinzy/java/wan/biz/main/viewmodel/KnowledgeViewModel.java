@@ -8,18 +8,19 @@ import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.xinzy.java.wan.biz.main.model.KnowledgeModel;
+import com.xinzy.java.wan.api.WanApiModel;
 import com.xinzy.java.wan.entity.Chapter;
 import com.xinzy.java.wan.widget.StatusView;
 import com.xinzy.mvvm.lib.base.BaseViewModel;
 import com.xinzy.mvvm.lib.util.Collections;
+import com.xinzy.mvvm.lib.util.L;
 
 import java.util.List;
 
 import static com.xinzy.java.wan.util.Macro.KEY_CHAPTER;
 import static com.xinzy.java.wan.util.Macro.ROUTER_TOPICS;
 
-public class KnowledgeViewModel extends BaseViewModel<KnowledgeModel> {
+public class KnowledgeViewModel extends BaseViewModel<WanApiModel> {
 
     public ObservableBoolean isRefreshing = new ObservableBoolean(false);
     public ObservableField<StatusView.Status> displayStatus = new ObservableField<>(StatusView.Status.Normal);
@@ -56,6 +57,10 @@ public class KnowledgeViewModel extends BaseViewModel<KnowledgeModel> {
     public void onItemChapterClick(Object object, int position) {
         Chapter chapter = (Chapter) object;
         ARouter.getInstance().build(ROUTER_TOPICS).withParcelable(KEY_CHAPTER, chapter).navigation();
+    }
+
+    public void onItemTagClick(String tag) {
+        L.d("onItemTagClick: ");
     }
 
     @Override

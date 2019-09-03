@@ -20,15 +20,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:status="@{viewModel.displayStatus}"
-            app:onRetry="@{viewModel::refresh}">
+            app:onRetryAction="@{viewModel::refresh}">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="@{LayoutManagers.linear()}"
                 app:adapter="@{viewModel.topicAdapter}"
-                app:onScrollToEnd="@{viewModel::onNextPage}"
-                app:onItemClick="@{viewModel::onItemTopicClick}"/>
+                app:onScrollToEndAction="@{viewModel::onNextPage}"
+                app:onItemClickListener="@{viewModel::onItemTopicClick}"/>
         </com.xinzy.java.wan.widget.StatusView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

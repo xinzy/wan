@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".biz.splash.SplashScreenActivity">
+        <activity
+            android:name=".biz.splash.SplashScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +24,11 @@
         </activity>
         <activity
             android:name=".biz.main.MainActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
-        <activity android:name=".biz.web.WebViewActivity" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".biz.web.WebViewActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".biz.chapter.TopicListActivity"
             android:theme="@style/AppTheme.NoActionBar" />

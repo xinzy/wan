@@ -1,5 +1,6 @@
 package com.xinzy.java.wan.biz.main;
 
+import android.os.SystemClock;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -7,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.xinzy.java.wan.R;
 import com.xinzy.java.wan.biz.main.fragment.HomeFragment;
 import com.xinzy.java.wan.biz.main.fragment.KnowledgeFragment;
@@ -35,10 +37,23 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     private ProjectFragment mProjectFragment = ProjectFragment.newInstance();
     private MineFragment mMineFragment = MineFragment.newInstance();
 
+    private long mLastPressedBackTimestamp;
+
     @Override
     protected void onViewDataBinding(@NonNull ActivityMainBinding dataBinding, @NonNull MainViewModel viewModel) {
         dataBinding.navView.setOnNavigationItemSelectedListener(this);
         dataBinding.navView.setSelectedItemId(R.id.navigation_home);
+    }
+
+    @Override
+    public void onBackPressed() {
+        long timestamp = SystemClock.uptimeMillis();
+        if (timestamp - mLastPressedBackTimestamp < 2000) {
+            super.onBackPressed();
+        } else {
+            mLastPressedBackTimestamp = timestamp;
+            Snackbar.make(mDataBinding.container, "再按一次退出", Snackbar.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -72,18 +87,21 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     }
 
     private void show(BaseFragment fragment) {
+        if (fragment == mSelectedFragment) return;
+
         String tag =  fragment.getClass().getSimpleName();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if (mSelectedFragment == null) {
-            transaction.add(R.id.fragmentContainer, fragment,
-                    fragment.getClass().getSimpleName()).commit();
+            transaction.add(R.id.fragmentContainer, fragment, fragment.getClass().getSimpleName())
+                    .commit();
         } else {
             if (getSupportFragmentManager().findFragmentByTag(tag) != null) {
-                getSupportFragmentManager().beginTransaction().show(fragment).hide(mSelectedFragment)
-                        .commit();
+                getSupportFragmentManager().beginTransaction().show(fragment)
+                        .hide(mSelectedFragment).commit();
             } else {
                 getSupportFragmentManager().beginTransaction().hide(mSelectedFragment)
-                        .add(R.id.fragmentContainer, fragment, fragment.getClass().getSimpleName()).commit();
+                        .add(R.id.fragmentContainer, fragment, fragment.getClass().getSimpleName())
+                        .commit();
             }
         }
         mSelectedFragment = fragment;

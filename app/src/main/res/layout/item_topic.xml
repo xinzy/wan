@@ -105,22 +105,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <com.xinzy.mvvm.lib.view.widget.TagView
+                    <com.xinzy.mvvm.lib.view.widget.TagGroup
                         android:id="@+id/itemTags"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:horizontalSpace="4dp"
-                        app:maxLines="1"
-                        app:itemVerticalPadding="2dp"
-                        app:itemHorizontalPadding="4dp"
-                        app:itemBorderWidth="1px"
-                        app:itemRadius="4dp"
-                        app:itemBorderColor="#439766"
-                        app:itemBackgroundColor="@android:color/transparent"
-                        app:itemTextColor="#439766"
-                        app:itemTextSize="10sp"
-                        app:itemTheme="none"
-                        app:itemDistance="2dp"
+                        style="@style/TagGroup.Small"
                         app:tags="@{item.getTagTexts()}"/>
                 </FrameLayout>
 

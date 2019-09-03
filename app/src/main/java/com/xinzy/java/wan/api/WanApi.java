@@ -57,4 +57,12 @@ public interface WanApi {
     @GET("/wxarticle/list/{cid}/{page}/json")
     Observable<ApiResult<WanList<Topic>>> topicByWeixin(@Path("page") int page, @Path("cid") int cid,
                                                         @Query("k") String keyword);
+
+    /** 项目分类列表 */
+    @GET("/project/tree/json")
+    Observable<ApiResult<List<Chapter>>> projectChapters();
+
+    /** 项目分类下的文章列表*/
+    @GET("/project/list/{page}/json")
+    Observable<ApiResult<WanList<Topic>>> topicByProject(@Path("page") int page, @Query("cid") int cid);
 }

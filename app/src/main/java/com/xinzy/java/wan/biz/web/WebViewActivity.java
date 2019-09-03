@@ -1,9 +1,11 @@
 package com.xinzy.java.wan.biz.web;
 
+import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -27,13 +29,16 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding, WebVie
     protected String mTitle;
 
     private WebView mWebView;
+    private ActionBar mActionBar;
 
     @Override
     protected void onViewDataBinding(@NonNull ActivityWebViewBinding dataBinding, @NonNull WebViewViewModel viewModel) {
         ARouter.getInstance().inject(this);
 
-        setTitle(mTitle);
-        setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(dataBinding.toolBar);
+        mActionBar = getSupportActionBar();
+        mActionBar.setTitle(mTitle);
+        mActionBar.setDisplayHomeAsUpEnabled(true);
 
         mWebView = dataBinding.webView;
         mWebView.setWebChromeClient(viewModel.getWebChromeClient());
@@ -50,8 +55,17 @@ public class WebViewActivity extends BaseActivity<ActivityWebViewBinding, WebVie
         initAction();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void initAction() {
-        mViewModel.receiverTitleAction.observe(this, this::setTitle);
+        mViewModel.receiverTitleAction.observe(this, title -> mActionBar.setTitle(title));
     }
 
     @Override

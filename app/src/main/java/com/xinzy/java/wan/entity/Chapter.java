@@ -5,7 +5,9 @@ import android.os.Parcelable;
 
 import androidx.annotation.Keep;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Keep
 public class Chapter implements Parcelable {
@@ -26,7 +28,7 @@ public class Chapter implements Parcelable {
     }
 
     public String getName() {
-        return name;
+        return name.replaceAll("&amp;", "&");
     }
 
     public int getOrder() {
@@ -49,6 +51,11 @@ public class Chapter implements Parcelable {
         return children;
     }
 
+    public List<String> getChildrenNames() {
+        List<String> names = new ArrayList<>();
+        Optional.of(children).ifPresent(data -> data.forEach(item -> names.add(item.name)));
+        return names;
+    }
 
     @Override
     public int describeContents() {

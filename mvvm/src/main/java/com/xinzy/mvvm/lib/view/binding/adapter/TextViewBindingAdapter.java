@@ -11,7 +11,7 @@ import com.xinzy.mvvm.lib.view.binding.command.BindingConsumer;
 
 public class TextViewBindingAdapter {
 
-    @BindingAdapter("onTextChangedAction")
+    @BindingAdapter("onTextChangedConsumer")
     public static void setTextChangeListener(EditText editText, BindingConsumer<String> consumer) {
         editText.addTextChangedListener(new TextChange(consumer));
     }

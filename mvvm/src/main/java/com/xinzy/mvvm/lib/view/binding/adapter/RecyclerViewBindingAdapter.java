@@ -17,7 +17,7 @@ import java.util.List;
 
 public class RecyclerViewBindingAdapter {
 
-    @BindingAdapter(value = {"layoutManager", "adapter", "onItemClick"},
+    @BindingAdapter(value = {"layoutManager", "adapter", "onItemClickListener"},
             requireAll = false)
     public static void setRecyclerViewAdapter(RecyclerView view, LayoutManagerFactory factory, MultiAdapter adapter,
                                               MultiAdapter.OnItemClickListener listener) {
@@ -40,7 +40,7 @@ public class RecyclerViewBindingAdapter {
         });
     }
 
-    @BindingAdapter("onScrollToEnd")
+    @BindingAdapter("onScrollToEndAction")
     public static void setRecyclerViewScrollToBottom(RecyclerView view, BindingAction action) {
         view.addOnScrollListener(new OnRecyclerViewScrollListener(action));
     }

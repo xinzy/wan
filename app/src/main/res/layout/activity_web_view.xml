@@ -11,23 +11,41 @@
             type="WebViewViewModel" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".biz.web.WebViewActivity">
+        android:orientation="vertical">
 
-        <WebView
-            android:id="@+id/webView"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"/>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:progress="@{viewModel.progress}"
-            android:visibility="@{viewModel.progressVisible ? View.VISIBLE : View.GONE}"/>
-    </FrameLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".biz.web.WebViewActivity">
+
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:progress="@{viewModel.progress}"
+                android:visibility="@{viewModel.progressVisible ? View.VISIBLE : View.GONE}"/>
+        </FrameLayout>
+    </LinearLayout>
 </layout>
