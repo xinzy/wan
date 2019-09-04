@@ -11,7 +11,6 @@ import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.xinzy.mvvm.lib.BR;
 import com.xinzy.mvvm.lib.base.BaseViewModel;
 import com.xinzy.mvvm.lib.util.Collections;
 

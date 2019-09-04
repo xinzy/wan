@@ -1,4 +1,4 @@
-package com.xinzy.mvvm.lib.provider;
+package com.xinzy.mvvm.lib.util;
 
 import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;

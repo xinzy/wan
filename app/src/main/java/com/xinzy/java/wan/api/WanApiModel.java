@@ -7,7 +7,7 @@ import com.xinzy.java.wan.entity.Topic;
 import com.xinzy.java.wan.entity.WanList;
 import com.xinzy.mvvm.lib.base.BaseModel;
 import com.xinzy.mvvm.lib.network.HttpServices;
-import com.xinzy.mvvm.lib.provider.RxUtil;
+import com.xinzy.mvvm.lib.util.RxUtil;
 
 import java.util.List;
 
